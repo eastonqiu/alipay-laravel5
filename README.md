@@ -1,6 +1,8 @@
 # Fork from echobool/alipay-laravel5 https://github.com/echobool/alipay-laravel5
 感谢
 
+# 改动： 添加芝麻信用借还API
+
 # alipay-laravel5 支付宝电脑网站支付
 **根据支付宝最新版 电脑网站支付接口SDK 整合laravel5**
 
@@ -17,7 +19,7 @@
     $ composer update -vvv
 或直接：
 
-    $ composer require "echobool/alipay-laravel5:dev-master"
+    $ composer require "easton/alipay-laravel5:dev-master"
 在app.php中加上
 
     EchoBool\AlipayLaravel\AlipayServiceProvider::class,

@@ -1,17 +1,17 @@
 <?php
 /**
- * ALIPAY API: alipay.trade.wap.pay request
+ * ALIPAY API: zhima.merchant.order.rent.create request
  *
  * @author auto create
- * @since 1.0, 2017-04-05 17:31:42
+ * @since 1.0, 2017-10-31 16:00:37
  */
 
 namespace EchoBool\AlipayLaravel\Request;
 
-class AlipayTradeWapPayRequest
+class ZhimaMerchantOrderRentCreateRequest
 {
 	/** 
-	 * 手机网站支付接口2.0
+	 * 信用借还创建订单
 	 **/
 	private $bizContent;
 
@@ -38,7 +38,7 @@ class AlipayTradeWapPayRequest
 
 	public function getApiMethodName()
 	{
-		return "alipay.trade.wap.pay";
+		return "zhima.merchant.order.rent.create";
 	}
 
 	public function setNotifyUrl($notifyUrl)

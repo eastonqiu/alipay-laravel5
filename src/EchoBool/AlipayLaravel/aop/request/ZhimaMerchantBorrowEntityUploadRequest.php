@@ -1,30 +1,21 @@
 <?php
 /**
- * ALIPAY API: alipay.trade.wap.pay request
  *
- * @author auto create
- * @since 1.0, 2017-04-05 17:31:42
  */
 
 namespace EchoBool\AlipayLaravel\Request;
 
-class AlipayTradeWapPayRequest
+class ZhimaMerchantBorrowEntityUploadRequest
 {
-	/** 
-	 * 手机网站支付接口2.0
-	 **/
 	private $bizContent;
 
 	private $apiParas = array();
 	private $terminalType;
 	private $terminalInfo;
 	private $prodCode;
-	private $apiVersion="1.0";
+	private $apiVersion="1.1";
 	private $notifyUrl;
-	private $returnUrl;
-    private $needEncrypt=false;
 
-	
 	public function setBizContent($bizContent)
 	{
 		$this->bizContent = $bizContent;
@@ -38,27 +29,7 @@ class AlipayTradeWapPayRequest
 
 	public function getApiMethodName()
 	{
-		return "alipay.trade.wap.pay";
-	}
-
-	public function setNotifyUrl($notifyUrl)
-	{
-		$this->notifyUrl=$notifyUrl;
-	}
-
-	public function getNotifyUrl()
-	{
-		return $this->notifyUrl;
-	}
-
-	public function setReturnUrl($returnUrl)
-	{
-		$this->returnUrl=$returnUrl;
-	}
-
-	public function getReturnUrl()
-	{
-		return $this->returnUrl;
+		return "zhima.merchant.borrow.entity.upload";
 	}
 
 	public function getApiParas()
@@ -106,16 +77,13 @@ class AlipayTradeWapPayRequest
 		return $this->apiVersion;
 	}
 
-  public function setNeedEncrypt($needEncrypt)
-  {
+	public function setNotifyUrl($notifyUrl)
+	{
+		$this->notifyUrl=$notifyUrl;
+	}
 
-     $this->needEncrypt=$needEncrypt;
-
-  }
-
-  public function getNeedEncrypt()
-  {
-    return $this->needEncrypt;
-  }
-
+	public function getNotifyUrl()
+	{
+		return $this->notifyUrl;
+	}
 }
