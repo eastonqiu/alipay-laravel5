@@ -29,10 +29,10 @@ class AlipaySdk
     }
 
     public function auth() {
-        return new AuthService($config);
+        return new AuthService($this->config);
     }
 
     public function zmxyBorrow() {
-        return new ZmxyBorrowService($config);
+        return new ZmxyBorrowService($this->config);
     }
 }
