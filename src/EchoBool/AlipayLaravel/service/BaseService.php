@@ -62,7 +62,7 @@ class BaseService {
      * @param $ispage  是否是页面接口，电脑网站支付是页面表单接口。
      * @return $response 支付宝返回的信息
      */
-    protected function aopclientRequestExecute($request, $action = '', $ispage = false) {
+    protected function aopclientRequestExecute($request, $action = '', $ispage = false, $authToken = null) {
         $aop = new AopClient ();
         $aop->gatewayUrl = $this->gateway_url;
         $aop->appId = $this->appid;
@@ -81,7 +81,7 @@ class BaseService {
             if ($action == 'tradePay') {
                 $result = $aop->smtExecute($request);
             } else {
-                $result = $aop->execute($request);
+                $result = $aop->execute($request, $authToken);
             }
 
         }

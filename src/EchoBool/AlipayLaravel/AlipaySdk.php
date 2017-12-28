@@ -13,12 +13,12 @@ use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeFastpayRefundQueryContentBuil
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradePagePayContentBuilder;
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeQueryContentBuilder;
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeRefundContentBuilder;
-use EchoBool\AlipayLaravel\Service\AlipayTradeService;
 use EchoBool\AlipayLaravel\Service\ZmxyBorrowTradeService;
+use EchoBool\AlipayLaravel\Service\AuthService;
 
 class AlipaySdk
 {
-    // public $tradeService;
+    public $auth;
     public $zmxyBorrow;
     public $config;
 
@@ -28,7 +28,7 @@ class AlipaySdk
     public function __construct($config)
     {
         $this->config = $config;
-        // $this->tradeService = new AlipayTradeService($config);
+        $this->auth = new AuthService($config);
         $this->zmxyBorrow = new ZmxyBorrowService($config);
     }
 }
