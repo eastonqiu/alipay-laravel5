@@ -18,8 +18,6 @@ use EchoBool\AlipayLaravel\Service\AuthService;
 
 class AlipaySdk
 {
-    public $auth;
-    public $zmxyBorrow;
     public $config;
 
     /**
@@ -28,7 +26,13 @@ class AlipaySdk
     public function __construct($config)
     {
         $this->config = $config;
-        $this->auth = new AuthService($config);
-        $this->zmxyBorrow = new ZmxyBorrowService($config);
+    }
+
+    public function auth() {
+        return new AuthService($config);
+    }
+
+    public function zmxyBorrow() {
+        return new ZmxyBorrowService($config);
     }
 }
