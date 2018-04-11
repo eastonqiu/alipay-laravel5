@@ -13,7 +13,8 @@ use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeFastpayRefundQueryContentBuil
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradePagePayContentBuilder;
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeQueryContentBuilder;
 use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeRefundContentBuilder;
-use EchoBool\AlipayLaravel\Service\ZmxyBorrowTradeService;
+use EchoBool\AlipayLaravel\Service\ZmxyBorrowService;
+use EchoBool\AlipayLaravel\Service\GatewayService;
 use EchoBool\AlipayLaravel\Service\AuthService;
 
 class AlipaySdk
@@ -30,6 +31,10 @@ class AlipaySdk
 
     public function auth() {
         return new AuthService($this->config);
+    }
+
+    public function gateway() {
+        return new GatewayService($this->config);
     }
 
     public function zmxyBorrow() {

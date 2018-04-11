@@ -20,7 +20,7 @@ class ZmxyBorrowService extends BaseService {
         parent::__construct($alipay_config);
     }
   
-    public static function zhimaOrderRentComplete($biz) {
+    public function zhimaOrderRentComplete($biz) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
