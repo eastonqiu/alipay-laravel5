@@ -18,7 +18,7 @@ class AuthService extends BaseService {
         parent::__construct($alipay_config);
     }
   
-    public static function getAuthTokenAndUserId($authCode) {
+    public function getAuthTokenAndUserId($authCode) {
         $request = new AlipaySystemOauthTokenRequest();
         $request->setCode($authCode);
         $request->setGrantType("authorization_code");
@@ -26,7 +26,7 @@ class AuthService extends BaseService {
         return $response->alipay_system_oauth_token_response;
     }
 
-    public static function getUserInfo($accessToken) {
+    public function getUserInfo($accessToken) {
         $request = new AlipayUserUserinfoShareRequest();
         $response = $this->aopclientRequestExecute($request, '', $accessToken);
         return $response->alipay_user_userinfo_share_response;

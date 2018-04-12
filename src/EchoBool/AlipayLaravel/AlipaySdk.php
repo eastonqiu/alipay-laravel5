@@ -12,6 +12,7 @@ use EchoBool\AlipayLaravel\Service\ZmxyBorrowService;
 use EchoBool\AlipayLaravel\Service\GatewayService;
 use EchoBool\AlipayLaravel\Service\AuthService;
 use EchoBool\AlipayLaravel\Service\PaymentService;
+use EchoBool\AlipayLaravel\Service\MiniProgramService;
 
 class AlipaySdk
 {
@@ -39,5 +40,9 @@ class AlipaySdk
 
     public function payment() {
         return new PaymentService($this->config);
+    }
+
+    public function miniProgram() {
+        return new MiniProgramService($this->config);
     }
 }

@@ -10,9 +10,6 @@
 
 namespace EchoBool\AlipayLaravel\Service;
 
-use EchoBool\AlipayLaravel\AopClient;
-use EchoBool\AlipayLaravel\Request\AlipaySystemOauthTokenRequest;
-use EchoBool\AlipayLaravel\Request\AlipayUserUserinfoShareRequest;
 use EchoBool\AlipayLaravel\Request\AlipayMobilePublicMessageCustomSendRequest;
 use Log;
 
