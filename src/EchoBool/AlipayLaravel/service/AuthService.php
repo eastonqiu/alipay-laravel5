@@ -28,7 +28,7 @@ class AuthService extends BaseService {
 
     public static function getUserInfo($accessToken) {
         $request = new AlipayUserUserinfoShareRequest();
-        $response = $this->aopclientRequestExecute($request, '', false, $accessToken);
+        $response = $this->aopclientRequestExecute($request, '', $accessToken);
         return $response->alipay_user_userinfo_share_response;
     }
 }

@@ -50,17 +50,11 @@ class BaseService {
      * @param $ispage  是否是页面接口，电脑网站支付是页面表单接口。
      * @return $response 支付宝返回的信息
      */
-    protected function aopclientRequestExecute($request, $action = '', $ispage = false, $authToken = null) {
-        if ($ispage) {
-            $result = $this->aop->pageExecute($request, "post");
-            echo $result;
+    protected function aopclientRequestExecute($request, $action = '', $authToken = null) {
+        if ($action == 'appPay') {
+            $result = $this->aop->sdkExecute($request);
         } else {
-            if ($action == 'tradePay') {
-                $result = $this->aop->smtExecute($request);
-            } else {
-                $result = $this->aop->execute($request, $authToken);
-            }
-
+            $result = $this->aop->execute($request, $authToken);
         }
 
         //打开后，将报文写入log文件

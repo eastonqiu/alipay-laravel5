@@ -8,14 +8,10 @@
 
 namespace EchoBool\AlipayLaravel;
 
-use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeCloseContentBuilder;
-use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeFastpayRefundQueryContentBuilder;
-use EchoBool\AlipayLaravel\BuilderModel\AlipayTradePagePayContentBuilder;
-use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeQueryContentBuilder;
-use EchoBool\AlipayLaravel\BuilderModel\AlipayTradeRefundContentBuilder;
 use EchoBool\AlipayLaravel\Service\ZmxyBorrowService;
 use EchoBool\AlipayLaravel\Service\GatewayService;
 use EchoBool\AlipayLaravel\Service\AuthService;
+use EchoBool\AlipayLaravel\Service\PaymentService;
 
 class AlipaySdk
 {
@@ -39,5 +35,9 @@ class AlipaySdk
 
     public function zmxyBorrow() {
         return new ZmxyBorrowService($this->config);
+    }
+
+    public function payment() {
+        return new PaymentService($this->config);
     }
 }
