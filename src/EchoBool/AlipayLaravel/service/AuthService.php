@@ -11,7 +11,7 @@
 namespace EchoBool\AlipayLaravel\Service;
 
 use EchoBool\AlipayLaravel\Request\AlipaySystemOauthTokenRequest;
-use EchoBool\AlipayLaravel\Request\AlipayUserUserinfoShareRequest;
+use EchoBool\AlipayLaravel\Request\AlipayUserInfoShareRequest;
 
 class AuthService extends BaseService {
     function __construct($alipay_config) {
@@ -27,9 +27,9 @@ class AuthService extends BaseService {
     }
 
     public function getUserInfo($accessToken) {
-        $request = new AlipayUserUserinfoShareRequest();
+        $request = new AlipayUserInfoShareRequest();
         $response = $this->aopclientRequestExecute($request, '', $accessToken);
-        return $response->alipay_user_userinfo_share_response;
+        return $response->alipay_user_info_share_response;
     }
 }
 
