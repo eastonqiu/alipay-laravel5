@@ -39,7 +39,8 @@ class PaymentService extends BaseService
 
         // 调用支付api
         $response = $this->aopclientRequestExecute($request, 'appPay');
-        return htmlspecialchars($response);
+        //return htmlspecialchars($response);
+        return $response;
     }
 
     /**

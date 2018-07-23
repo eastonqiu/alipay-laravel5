@@ -5,6 +5,9 @@
  * @author auto create
  * @since 1.0, 2017-01-13 19:11:40
  */
+
+namespace EchoBool\AlipayLaravel\Request;
+
 class AlipayTradeAppPayRequest
 {
 	/** 
