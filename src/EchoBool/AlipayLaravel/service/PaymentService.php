@@ -66,7 +66,7 @@ class PaymentService extends BaseService
      * @param $biz 业务参数
      * @return $response 支付宝返回的信息
      */
-    function refund($builder)
+    function refund($biz)
     {
         $bizContent = $this->json($biz);
         //打印业务参数
@@ -140,7 +140,7 @@ class PaymentService extends BaseService
      */
     function check($arr)
     {
-        $result = $aop->rsaCheckV1($arr, NULL, $this->aop->signType);
+        $result = $this->aop->rsaCheckV1($arr, NULL, $this->aop->signType);
 
         return $result;
     }
