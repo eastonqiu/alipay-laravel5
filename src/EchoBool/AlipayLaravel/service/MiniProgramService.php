@@ -25,6 +25,7 @@ class MiniProgramService extends BaseService {
         $request = new AlipayOpenAppMiniTemplatemessageSendRequest();
         $request->setBizContent($bizContent);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+        $response = $this->aopclientRequestExecute($request);
         return $response->$responseNode;
     }
 }
