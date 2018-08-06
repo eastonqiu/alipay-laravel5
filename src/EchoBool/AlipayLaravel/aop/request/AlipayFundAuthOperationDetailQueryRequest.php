@@ -1,17 +1,17 @@
 <?php
 /**
- * ALIPAY API: alipay.trade.query request
+ * ALIPAY API: alipay.fund.auth.operation.detail.query request
  *
  * @author auto create
- * @since 1.0, 2018-03-22 17:12:55
+ * @since 1.0, 2018-07-07 16:39:37
  */
 
 namespace EchoBool\AlipayLaravel\Request;
 
-class AlipayTradeQueryRequest
+class AlipayFundAuthOperationDetailQueryRequest
 {
 	/** 
-	 * 统一收单线下交易查询修改路由策略到R
+	 * 资金预授权单笔操作明细查询接口
 	 **/
 	private $bizContent;
 
@@ -38,7 +38,7 @@ class AlipayTradeQueryRequest
 
 	public function getApiMethodName()
 	{
-		return "alipay.trade.query";
+		return "alipay.fund.auth.operation.detail.query";
 	}
 
 	public function setNotifyUrl($notifyUrl)

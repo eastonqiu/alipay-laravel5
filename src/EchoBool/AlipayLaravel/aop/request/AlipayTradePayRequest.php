@@ -5,11 +5,13 @@
  * @author auto create
  * @since 1.0, 2017-04-11 14:07:04
  */
+
+namespace EchoBool\AlipayLaravel\Request;
+
 class AlipayTradePayRequest
 {
 	/** 
-	 * 用于在线下场景交易一次创建并支付掉
-修改路由策略到R
+	 * 用于在线下场景交易一次创建并支付掉修改路由策略到R
 	 **/
 	private $bizContent;
 
