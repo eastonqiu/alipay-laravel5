@@ -18,54 +18,57 @@ use EchoBool\AlipayLaravel\Request\AlipayTradeRefundRequest;
 use EchoBool\AlipayLaravel\Request\AlipayFundAuthOperationDetailQueryRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeQueryRequest;
 
-class FundAuthService extends BaseService {
+class PreAuthService extends BaseService {
     function __construct($alipay_config) {
         parent::__construct($alipay_config);
     }
   
-    public function freeze($biz) {
+    public function freeze($biz, $notifyUrl) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
 
         $request = new AlipayFundAuthOrderAppFreezeRequest();
         $request->setBizContent($bizContent);
-        $response = $this->aopclientRequestExecute($request);
-        $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        $request->setNotifyUrl($notifyUrl);
+        $response = $this->aopclientRequestExecute($request, 'appPay');
+        return $response;
     }
 
-    public static function pay($biz) {
+    public static function pay($biz, $notifyUrl) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
 
         $request = new AlipayTradePayRequest();
         $request->setBizContent($bizContent);
+        $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
         return $response->responseNode;
     }
 
-    public static function cancel($biz) {
+    public static function cancel($biz, $notifyUrl) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
 
         $request = new AlipayFundAuthOperationCancelRequest();
         $request->setBizContent($bizContent);
+        $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
         return $response->responseNode;
     }
 
-    public static function unfreeze($biz){
+    public static function unfreeze($biz, $notifyUrl){
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
 
         $request = new AlipayFundAuthOrderUnfreezeRequest();
         $request->setBizContent($bizContent);
+        $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
         return $response->responseNode;

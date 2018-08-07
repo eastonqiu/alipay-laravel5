@@ -72,4 +72,16 @@ class BaseService {
     protected function json($arr) {
         return json_encode($arr,JSON_UNESCAPED_UNICODE);
     }
+
+    /**
+     * 验签方法
+     * @param $arr 验签支付宝返回的信息，使用支付宝公钥。
+     * @return boolean
+     */
+    function check($arr)
+    {
+        $result = $this->aop->rsaCheckV1($arr, NULL, $this->aop->signType);
+
+        return $result;
+    }
 }

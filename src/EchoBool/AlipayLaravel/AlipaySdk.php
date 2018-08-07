@@ -13,6 +13,7 @@ use EchoBool\AlipayLaravel\Service\GatewayService;
 use EchoBool\AlipayLaravel\Service\AuthService;
 use EchoBool\AlipayLaravel\Service\PaymentService;
 use EchoBool\AlipayLaravel\Service\MiniProgramService;
+use EchoBool\AlipayLaravel\Service\PreAuthService;
 
 class AlipaySdk
 {
@@ -44,5 +45,9 @@ class AlipaySdk
 
     public function miniProgram() {
         return new MiniProgramService($this->config);
+    }
+
+    public function preAuth() {
+        return new PreAuthService($this->config);
     }
 }
