@@ -35,7 +35,7 @@ class PreAuthService extends BaseService {
         return $response;
     }
 
-    public static function pay($biz, $notifyUrl) {
+    public function pay($biz, $notifyUrl) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -45,10 +45,10 @@ class PreAuthService extends BaseService {
         $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 
-    public static function cancel($biz, $notifyUrl) {
+    public function cancel($biz, $notifyUrl) {
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -58,10 +58,10 @@ class PreAuthService extends BaseService {
         $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 
-    public static function unfreeze($biz, $notifyUrl){
+    public function unfreeze($biz, $notifyUrl){
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -71,10 +71,10 @@ class PreAuthService extends BaseService {
         $request->setNotifyUrl($notifyUrl);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 
-    public static function refund($biz){
+    public function refund($biz){
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -83,10 +83,10 @@ class PreAuthService extends BaseService {
         $request->setBizContent($bizContent);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 
-    public static function operationDetailQuery($biz){
+    public function operationDetailQuery($biz){
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -95,10 +95,10 @@ class PreAuthService extends BaseService {
         $request->setBizContent($bizContent);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 
-    public static function tradeQuery($biz){
+    public function tradeQuery($biz){
         $bizContent = $this->json($biz);
         //打印业务参数
         $this->writeLog($bizContent);
@@ -107,7 +107,7 @@ class PreAuthService extends BaseService {
         $request->setBizContent($bizContent);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
-        return $response->responseNode;
+        return $response->$responseNode;
     }
 }
 
