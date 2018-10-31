@@ -17,6 +17,7 @@ use EchoBool\AlipayLaravel\Request\AlipayFundAuthOrderUnfreezeRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeRefundRequest;
 use EchoBool\AlipayLaravel\Request\AlipayFundAuthOperationDetailQueryRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeQueryRequest;
+use EchoBool\AlipayLaravel\Request\AlipayTradeOrderinfoSyncRequest;
 
 class PreAuthService extends BaseService {
     function __construct($alipay_config) {
@@ -104,6 +105,18 @@ class PreAuthService extends BaseService {
         $this->writeLog($bizContent);
 
         $request = new AlipayTradeQueryRequest();
+        $request->setBizContent($bizContent);
+        $response = $this->aopclientRequestExecute($request);
+        $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+        return $response->$responseNode;
+    }
+
+    public function sync($biz){
+        $bizContent = $this->json($biz);
+        //打印业务参数
+        $this->writeLog($bizContent);
+
+        $request = new AlipayTradeOrderinfoSyncRequest();
         $request->setBizContent($bizContent);
         $response = $this->aopclientRequestExecute($request);
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";

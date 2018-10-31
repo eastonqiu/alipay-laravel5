@@ -1,17 +1,17 @@
 <?php
 /**
- * ALIPAY API: alipay.trade.cancel request
+ * ALIPAY API: alipay.trade.order.settle request
  *
  * @author auto create
- * @since 1.0, 2017-03-23 10:05:50
+ * @since 1.0, 2016-12-08 00:49:25
  */
 
 namespace EchoBool\AlipayLaravel\Request;
 
-class AlipayTradeCancelRequest
+class AlipayTradeOrderinfoSyncRequest
 {
 	/** 
-	 * 统一收单交易撤销接口
+	 * 统一收单交易结算接口
 	 **/
 	private $bizContent;
 
@@ -38,7 +38,7 @@ class AlipayTradeCancelRequest
 
 	public function getApiMethodName()
 	{
-		return "alipay.trade.cancel";
+		return "alipay.trade.orderinfo.sync";
 	}
 
 	public function setNotifyUrl($notifyUrl)
