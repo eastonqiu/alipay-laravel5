@@ -85,7 +85,7 @@ class PaymentService extends BaseService
      * @param $biz 业务参数
      * @return $response 支付宝返回的信息
      */
-    function close($builder)
+    function close($biz)
     {
         $bizContent = $this->json($biz);
         //打印业务参数
@@ -103,7 +103,7 @@ class PaymentService extends BaseService
      * @param $biz 业务参数
      * @return $response 支付宝返回的信息
      */
-    function refundQuery($builder)
+    function refundQuery($biz)
     {
         $bizContent = $this->json($biz);
         //打印业务参数
@@ -120,7 +120,7 @@ class PaymentService extends BaseService
      * @param $biz 业务参数
      * @return $response 支付宝返回的信息
      */
-    function downloadurlQuery($builder)
+    function downloadurlQuery($biz)
     {
         $bizContent = $this->json($biz);
         //打印业务参数
