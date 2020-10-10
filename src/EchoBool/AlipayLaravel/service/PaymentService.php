@@ -13,6 +13,7 @@ namespace EchoBool\AlipayLaravel\Service;
 use EchoBool\AlipayLaravel\Request\AlipayDataDataserviceBillDownloadurlQueryRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeCloseRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeFastpayRefundQueryRequest;
+use EchoBool\AlipayLaravel\Request\AlipayTradeCreateRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeAppPayRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeQueryRequest;
 use EchoBool\AlipayLaravel\Request\AlipayTradeRefundRequest;
@@ -40,6 +41,24 @@ class PaymentService extends BaseService
         // 调用支付api
         $response = $this->aopclientRequestExecute($request, 'appPay');
         //return htmlspecialchars($response);
+        return $response;
+    }
+
+    /**
+     * @param $biz 业务参数
+     * alipay.trade.app.pay
+     */
+    function payCreate($biz, $notify_url) {
+        $bizContent = $this->json($biz);
+        //打印业务参数
+        $this->writeLog($bizContent);
+
+        $request = new AlipayTradeCreateRequest();
+        $request->setNotifyUrl($notify_url);
+        $request->setBizContent($bizContent);
+
+        $response = $this->aopclientRequestExecute($request);
+        $response = $response->alipay_trade_create_response;
         return $response;
     }
 
